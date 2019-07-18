@@ -87,14 +87,15 @@ lazy val akkaScalaNightly = akkaModule("akka-scala-nightly")
   .disablePlugins(ValidatePullRequest, MimaPlugin, CopyrightHeaderInPr)
 
 lazy val benchJmh = akkaModule("akka-bench-jmh")
+  .dependsOn(streamTests % "compile->test;test->test")
   .dependsOn(
     Seq(
       actor,
-      stream, streamTests,
+      stream,
       persistence, persistenceTyped,
       distributedData, clusterTyped,
       testkit
-    ).map(_ % "compile->compile;compile->test"): _*
+    ).map(_ % "compile->compile;test->test"): _*
   )
   .settings(Dependencies.benchJmh)
   .enablePlugins(JmhPlugin, ScaladocNoVerificationOfDiagrams, NoPublish, CopyrightHeader)
@@ -481,4 +482,3 @@ def akkaModule(name: String): Project =
     .settings(akka.AkkaBuild.defaultSettings)
     .settings(akka.Formatting.formatSettings)
     .enablePlugins(BootstrapGenjavadoc)
-

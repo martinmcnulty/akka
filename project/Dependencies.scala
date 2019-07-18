@@ -41,6 +41,8 @@ object Dependencies {
   object Compile {
     // Compile
 
+      val commonsIo = "commons-io" % "commons-io" % "2.6" // ApacheV2
+
     val camelCore = "org.apache.camel" % "camel-core" % "2.17.7" exclude ("org.slf4j", "slf4j-api") // ApacheV2
 
     // when updating config version, update links ActorSystem ScalaDoc to link to the updated version
@@ -192,7 +194,7 @@ object Dependencies {
 
   val contrib = l ++= Seq(Test.commonsIo)
 
-  val benchJmh = l ++= Seq(Provided.levelDB, Provided.levelDBNative, Compile.jctools)
+  val benchJmh = l ++= Seq(Provided.levelDB, Provided.levelDBNative, Compile.jctools, Compile.commonsIo)
 
   // akka stream
 

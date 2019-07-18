@@ -32,6 +32,7 @@
 .scala_dependencies
 .scalastyle
 .settings
+.bloop/
 .cache*
 .tmpBin
 .tags
