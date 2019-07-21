@@ -15,6 +15,7 @@
 *~
 .#*
 .*.swp
+.bloop
 .DS_Store
 .cache
 .cache
@@ -24,6 +25,7 @@
 .eprj
 .history
 .idea
+.metals
 .manager
 .multi-jvm
 .project
