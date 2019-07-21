@@ -44,7 +44,7 @@ trait CopyrightHeader extends AutoPlugin {
     }
   )
 
-  val CurrentYear = java.time.Year.now.getValue.toString
+  val CurrentYear = "2018"
   val CopyrightPattern = "Copyright \\([Cc]\\) (\\d{4}(-\\d{4})?) (Lightbend|Typesafe) Inc. <.*>".r
   val CopyrightHeaderPattern = s"(?s).*${CopyrightPattern}.*".r
 
