@@ -227,8 +227,8 @@ private[persistence] trait Eventsourced extends Snapshotter with PersistenceStas
     require(persistenceId.trim.nonEmpty, s"persistenceId cannot be empty for PersistentActor [${self.path}]")
 
     // Fail fast on missing plugins.
-    val j = journal;
-    val s = snapshotStore
+    journal;
+    snapshotStore
     requestRecoveryPermit()
     super.aroundPreStart()
   }

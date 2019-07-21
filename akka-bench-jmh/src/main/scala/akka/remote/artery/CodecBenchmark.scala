@@ -114,7 +114,7 @@ class CodecBenchmark {
     val actorOnSystemA = system.actorOf(Props.empty, "a")
     senderStringA = actorOnSystemA.path.toSerializationFormatWithAddress(uniqueLocalAddress.address)
 
-    val actorOnSystemB = systemB.actorOf(Props.empty, "b")
+    systemB.actorOf(Props.empty, "b")
     val addressB = systemB.asInstanceOf[ExtendedActorSystem].provider.getDefaultAddress
     val rootB = RootActorPath(addressB)
     remoteRefB =

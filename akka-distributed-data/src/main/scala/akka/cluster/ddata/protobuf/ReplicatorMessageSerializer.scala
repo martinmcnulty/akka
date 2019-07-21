@@ -256,7 +256,7 @@ class ReplicatorMessageSerializer(val system: ExtendedActorSystem)
   private def statusToProto(status: Status): dm.Status = {
     val b = dm.Status.newBuilder()
     b.setChunk(status.chunk).setTotChunks(status.totChunks)
-    val entries = status.digests.foreach {
+    status.digests.foreach {
       case (key, digest) ⇒
         b.addEntries(dm.Status.Entry.newBuilder().
           setKey(key).
@@ -275,7 +275,7 @@ class ReplicatorMessageSerializer(val system: ExtendedActorSystem)
 
   private def gossipToProto(gossip: Gossip): dm.Gossip = {
     val b = dm.Gossip.newBuilder().setSendBack(gossip.sendBack)
-    val entries = gossip.updatedData.foreach {
+    gossip.updatedData.foreach {
       case (key, data) ⇒
         b.addEntries(dm.Gossip.Entry.newBuilder().
           setKey(key).
@@ -297,7 +297,7 @@ class ReplicatorMessageSerializer(val system: ExtendedActorSystem)
       .setFromNode(uniqueAddressToProto(deltaPropagation.fromNode))
     if (deltaPropagation.reply)
       b.setReply(deltaPropagation.reply)
-    val entries = deltaPropagation.deltas.foreach {
+    deltaPropagation.deltas.foreach {
       case (key, Delta(data, fromSeqNr, toSeqNr)) ⇒
         val b2 = dm.DeltaPropagation.Entry.newBuilder()
           .setKey(key)

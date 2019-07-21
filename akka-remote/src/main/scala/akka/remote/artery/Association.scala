@@ -324,7 +324,7 @@ private[remote] class Association(
       outboundEnvelopePool.acquire().init(recipient, message.asInstanceOf[AnyRef], sender)
 
     // volatile read to see latest queue array
-    val unused = queuesVisibility
+    queuesVisibility
 
     def dropped(queueIndex: Int, qSize: Int, env: OutboundEnvelope): Unit = {
       val removed = isRemovedAfterQuarantined()
@@ -697,7 +697,7 @@ private[remote] class Association(
   }
 
   private def getOrCreateQueueWrapper(queueIndex: Int, capacity: Int): QueueWrapper = {
-    val unused = queuesVisibility // volatile read to see latest queues array
+    queuesVisibility // volatile read to see latest queues array
     queues(queueIndex) match {
       case existing: QueueWrapper ⇒ existing
       case _ ⇒

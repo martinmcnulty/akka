@@ -153,7 +153,7 @@ trait LoggingBus extends ActorEventBus {
    * Internal Akka use only
    */
   private[akka] def stopDefaultLoggers(system: ActorSystem): Unit = {
-    val level = _logLevel // volatile access before reading loggers
+    _logLevel // volatile access before reading loggers
     if (!(loggers contains StandardOutLogger)) {
       setUpStdoutLogger(system.settings)
       publish(Debug(simpleName(this), this.getClass, "shutting down: StandardOutLogger"))

@@ -277,7 +277,6 @@ import akka.stream.impl.fusing.GraphStages.SingleSource
    */
   @InternalApi private[impl] def printTraversal(t: Traversal, indent: Int = 0): Unit = {
     var current: Traversal = t
-    var slot = 0
 
     def prindent(s: String): Unit = println(" | " * indent + s)
 

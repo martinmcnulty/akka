@@ -187,7 +187,7 @@ private[akka] class ClusterShardingMessageSerializer(val system: ExtendedActorSy
     }
 
   private def coordinatorStateToProto(state: State): sm.CoordinatorState = {
-    val regions = state.regions.map {
+    state.regions.map {
       case (regionRef, _) ⇒ Serialization.serializedActorPath(regionRef)
     }.toVector.asJava
 

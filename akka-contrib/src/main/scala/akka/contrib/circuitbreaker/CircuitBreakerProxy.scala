@@ -158,7 +158,7 @@ final class CircuitBreakerProxy(
 
       case Event(message, state) ⇒
         log.debug("CLOSED: Sending message {} expecting a response within timeout {}", message, callTimeout)
-        val currentSender = sender()
+        sender()
         forwardRequest(message, sender, state, log)
         stay
 

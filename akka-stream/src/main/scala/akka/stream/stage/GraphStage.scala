@@ -493,7 +493,7 @@ abstract class GraphStageLogic private[stream] (val inCount: Int, val outCount: 
    */
   final protected def grab[T](in: Inlet[T]): T = {
     val connection = conn(in)
-    val it = interpreter
+    interpreter
     val elem = connection.slot
 
     // Fast path

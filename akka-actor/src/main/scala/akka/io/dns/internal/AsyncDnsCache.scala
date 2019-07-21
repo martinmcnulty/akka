@@ -17,7 +17,6 @@ import akka.io.dns.internal.DnsClient.Answer
 import akka.io.dns.{ AAAARecord, ARecord }
 
 import scala.annotation.tailrec
-import scala.concurrent.duration._
 
 /**
  * Internal API
